@@ -10,10 +10,12 @@ from launch_ros.substitutions import FindPackageShare
 def generate_launch_description():
     #bringup_dir = get_package_share_directory('nav2_bringup')
     config_dir = os.path.join(get_package_share_directory('rover_project'), 'config')
-    map_file = os.path.join(config_dir, 'warehouse_map.yaml')
     params_file = os.path.join(get_package_share_directory('rover_project'), 'config', 'nav2_params.yaml')
 
+    
+
     return LaunchDescription([
+      
         # #Include Nav2 and world launch
         # IncludeLaunchDescription(
         #     PythonLaunchDescriptionSource(
@@ -26,19 +28,19 @@ def generate_launch_description():
         # ),
 
         #Include Gazebo and world launch
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(
-                PathJoinSubstitution([
-                    FindPackageShare('rover_project'),
-                    'launch',
-                    'warehouse_rover.launch.py'
-                ])
-            ),
-            launch_arguments={
-                'map': map_file,
-                'use_sim_time': 'true'
-            }.items()
-        ),
+        #IncludeLaunchDescription(
+        #    PythonLaunchDescriptionSource(
+        #        PathJoinSubstitution([
+        #            FindPackageShare('rover_project'),
+        #            'launch',
+        #            'warehouse_rover.launch.py'
+        #        ])
+        #    ),
+        #    launch_arguments={
+        #        'map': map_file,
+        #        'use_sim_time': 'true'
+        #    }.items()
+        #),
 
         # Include RViz launch
         IncludeLaunchDescription(
@@ -82,11 +84,11 @@ def generate_launch_description():
         #         "angle_compensate": True
         #     }]
         # ),
-        # Node(
-        #     package='rover_project',
-        #     executable='obstacle_avoidance',
-        #     name='obstacle_avoidance',
-        #     output='screen'
+        #Node(
+             #package='rover_project',
+             #executable='obstacle_avoidance',
+             #name='obstacle_avoidance',
+            #output='screen'
         # ),
 
      ]) 
